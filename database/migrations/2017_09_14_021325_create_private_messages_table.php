@@ -21,6 +21,7 @@ class CreatePrivateMessagesTable extends Migration
 
             $table->foreign('conversation_id')->references('id')->on('conversations');
             $table->foreign('user_id')->references('id')->on('users');
+            
             $table->timestamps();
         });
     }
