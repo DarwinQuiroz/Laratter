@@ -8,7 +8,7 @@ use App\Http\Requests\CreateMessageRequest;
 
 class MessagesController extends Controller
 {
-    public function show(MEssage $message)
+    public function show(Message $message)
     {
         // $message = Message::find($id);
         return view('messages.show', ['message' => $message]);
@@ -26,5 +26,15 @@ class MessagesController extends Controller
         ]);
 
         return redirect('/messages/' . $message->id);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $messages = Message::where('content', 'LIKE', "%$query%")->get();
+
+        return view('messages.index', [
+            'messages' => $messages,
+        ]);
     }
 }

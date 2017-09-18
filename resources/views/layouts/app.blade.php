@@ -8,14 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Laratter</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
     <div id="app" class="container">
-        <nav class="navbar navbar-expand-lg bg-light navbar-light static-top navbar-toggleable-md bg-faded">
+        <nav class="navbar sticky-top navbar-expand-lg bg-light navbar-light static-top navbar-toggleable-md bg-faded">
             <div class="container">
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -28,7 +28,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="nav-item">
+                            <form action="/messages" method="GET">
+                                <div class="input-group">
+                                    <input type="text" name="query" class="form-control form-control-sm" placeholder="Buscar..." required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-outline-success btn-sm">Buscar</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -3,27 +3,26 @@
 @section('content')
     <div class="jumbotron text-center">
     	<h1>Laratter</h1>
-    	<nav>
-    		<ul class="nav nav-pills">
-    			<li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-    		</ul>
-    	</nav>
     </div>
 	
-	<div class="row">
-		<form action="/messages/create" method="POST" enctype="multipart/form-data">
-			{{ csrf_field() }}
-			<div class="form-group @if($errors->has('message')) is-invalid @endif">
-				<input type="text" name="message" class="form-control @if($errors->has('message')) is-invalid @else is-valid @endif" placeholder="Qué estás pensando?">	
-				@if($errors->has('message'))
-					@foreach($errors->get('message') as $error)
-						<div class="invalid-feedback">{{$error}}</div>
-					@endforeach
-				@endif
-				<input type="file" name="image" class="form-control-file">
+	@if(Auth::check())
+		<div class="row">
+			<div class="col-md-6 mx-auto">
+				<form action="/messages/create" method="POST" enctype="multipart/form-data">
+					{{ csrf_field() }}
+					<div class="form-group @if($errors->has('message')) is-invalid @endif">
+						<input type="text" name="message" class="form-control @if($errors->has('message')) is-invalid @else is-valid @endif" placeholder="Qué estás pensando?">	
+						@if($errors->has('message'))
+							@foreach($errors->get('message') as $error)
+								<div class="invalid-feedback">{{$error}}</div>
+							@endforeach
+						@endif
+						<input type="file" name="image" class="form-control-file">
+					</div>
+				</form>
 			</div>
-		</form>
-	</div>
+		</div>
+	@endif
 
     <div class="row">
     	@forelse($messages as $message)

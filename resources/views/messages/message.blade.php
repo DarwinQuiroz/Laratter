@@ -7,9 +7,10 @@
         </div>
         {{ $message->content }}
         <a href="/messages/{{ $message->id }}">Ver..</a>
+        <div class="card-text text-muted">
+            {{$message->created_at}}
+        </div>
     </p>
 
-    <div class="card-text text-muted float-right">
-        {{$message->created_at}}
-    </div>
+    
 </div>
