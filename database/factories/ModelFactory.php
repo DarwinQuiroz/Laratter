@@ -25,12 +25,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Message::class, function (Faker\Generator $faker) {
+$factory->define(App\Message::class, function(Faker\Generator $faker) {
     return [
         // 'content' => $faker->words(5, true),
         'content' => $faker->realText(random_int(20, 160)),
         'image' => $faker->imageUrl(600, 338),
         'created_at' => $faker->dateTimeThisDecade,
         'updated_at' => $faker->dateTimeThisDecade,
+    ];
+});
+
+$factory->define(App\Response::class, function(Faker\Generator $faker){
+    return [
+        'message' => $faker->words(3, true),
+        'created_at' => $faker->dateTimeThisYear,
+        'updated_at' => $faker->dateTimeThisYear,
     ];
 });

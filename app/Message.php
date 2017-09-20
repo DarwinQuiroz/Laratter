@@ -15,6 +15,11 @@ class Message extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function responses()
+    {
+        return $this->hasMany(Response::class)->latest();
+    }
+
     public function getImageAttribute($image)
     {
         if(!$image || starts_with($image, 'http'))

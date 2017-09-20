@@ -24,6 +24,7 @@ Route::get('/{username}/follows', 'UsersController@follows');
 Route::get('/{username}/followers', 'UsersController@followers');
 Route::get('/{username}', 'UsersController@show');
 
+Route::get('/api/messages/{message}/responses', 'MessagesController@responses');
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
