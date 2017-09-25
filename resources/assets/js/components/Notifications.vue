@@ -8,6 +8,8 @@
 
 <script>
 export default {
+    props: ['user'],
+
     data(){
         return {
             notifications: []
@@ -18,6 +20,11 @@ export default {
         axios.get('/api/notifications')
             .then(res => {
                 this.notifications = res.data;
+                
+                Echo.private(`App.User.${this.user}`)
+                    .notification(notification => {
+                        this.notifications.unshift(notification);
+                    });
             });
     }
 }

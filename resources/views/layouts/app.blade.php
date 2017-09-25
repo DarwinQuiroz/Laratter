@@ -51,7 +51,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     Notificaciones <span class="caret"></span>
                                 </a>
-                                <notifications :user=" {{ Auth::user()->id }}"></notifications>
+                                <notifications :user="{{ Auth::user()->id }}"></notifications>
                             </li>
 
                             <li class="nav-item dropdown">
